@@ -1,0 +1,177 @@
+/* CAROUSEL */
+#carouselHome .carousel-item .carousel-caption {
+    text-align: left;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 
+* first-child : thứ tự trước, loại thẻ sau
+* first-of-type : loại thẻ trước, thứ tự sau
+*/
+#carouselHome .carousel-item .carousel-caption p:first-of-type {
+    letter-spacing: $letter-spacing-0;
+    @include styleText($color-yellow-0, 0.875rem, $fw-2);
+    margin: 0;
+    animation-delay: 1s;
+}
+
+#carouselHome .carousel-item .carousel-caption p:last-of-type {
+    font-size: 1.125rem;
+    margin-bottom: 20px;
+}
+
+#carouselHome .carousel-item .carousel-caption h2 {
+    font-size: 3.25rem;
+    letter-spacing: $letter-spacing-1;
+    margin-bottom: $mg-1;
+}
+
+.homeCarousel__trailer {
+    animation-delay: 1s;
+}
+
+/* thẻ span là con trực tiếp của class homeCarousel__trailer */
+.homeCarousel__trailer > span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    border: 2px solid $color-white-0;
+    border-radius: 50%;
+    font-size: 0.8rem;
+
+    /* canh chữ PG ở giữa theo chiều ngang của hình tròn */
+    text-align: center;
+
+    /* canh chữ PG ở giữa theo chiều dọc của hình tròn */
+    line-height: 48px;
+
+    margin-right: $mg-0 + 3;
+}
+
+.homeCarousel__trailer button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: $color-white-0;
+    background: linear-gradient(to right, $color-yellow-0, $color-orange-0);
+    position: relative;
+
+    /* các thẻ con nằm ngoài thẻ cha button đều bị che (biến mất khỏi giao diện luôn), kể cả viền mép ngoài thẻ cha cũng bị che */
+    overflow: hidden;
+
+    outline: none;
+}
+
+.homeCarousel__trailer button:hover {
+    color: $color-white-0;
+}
+
+/*
+* B1: xây dựng overlay phủ lên thẻ cha (button)
+*/
+.homeCarousel__trailer button::before {
+    content: "";
+    width: 110%;
+    height: 100%;
+    display: block;
+    background-color: $color-orange-0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    /* transform phải viết tất cả lên 1 hàng, 
+        nếu không sẽ bị đè code */
+    /* chưa hover */
+    transform: skewX(30deg) translateX(-110%);
+
+    transition: 0.5s;
+}
+
+.homeCarousel__trailer button:hover::before {
+    /* đã hover */
+    transform: skewX(30deg) translateX(-10px);
+}
+
+.homeCarousel__trailer button span {
+    position: relative;
+    z-index: 2;
+}
+
+#carouselHome .carousel-indicators {
+    justify-content: flex-start;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#carouselHome .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid white;
+    /* màu nền trong suốt */
+    background: transparent;
+    opacity: 1;
+
+    /* vùng border sẽ giữ nguyên kích thước,
+    dù có thêm padding */
+    box-sizing: border-box;
+
+    /* vùng phủ của màu nền so với viền */
+    /* background-clip: border-box; */
+}
+
+#carouselHome .carousel-indicators li.active {
+    background: $color-white-0;
+}
+
+.homeCarousel__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* dùng màu trải chỉ áp dụng cho 
+            background-color & background-image, 
+    không dùng cho các loại background khác */
+    background: linear-gradient(to top, $color-black-0, transparent);
+}
+
+#carouselHome {
+    height: 650px;
+}
+
+#carouselHome .carousel-inner {
+    height: 100%;
+}
+
+#carouselHome .carousel-item {
+    /* đơn vị % chỉ đi theo kích thước của thẻ cha gần nhất với nó */
+    height: 100%;
+
+    background-position: center;
+    background-size: cover;
+}
+
+#carouselHome .carousel-item:first-child {
+    background-image: url(../img/banner-web-1.gif);
+}
+
+#carouselHome .carousel-item:nth-child(2) {
+    background-image: url(../img/banner-web-2.jpg);
+}
+
+#carouselHome .carousel-item:nth-child(3) {
+    background-image: url(../img/banner-web-3.jpg);
+}
+
