@@ -1,0 +1,64 @@
+.payment {
+    .payment__content {
+        width: 90%;
+        margin: $mg-4 auto;
+        .payment__left {
+            background-color: $color-white-0;
+        }
+        .payment__right {
+            background-color: $color-gray-6;
+            .payment__items {
+                border: 1px solid $color-yellow-0;
+                padding: $pd-2;
+                margin-right: 0px;
+                margin-left: 0px;
+                .payment__item {
+                    padding: $pd-0 0;
+                    .cart__img {
+                        position: relative;
+                        img {
+                            border: 1px solid $color-yellow-0;
+                            border-radius: $border-radius-0;
+                            width: 100%;
+                            height: 120px;
+                        }
+                        .cart__remove {
+                            width: 30px;
+                            height: 30px;
+                            line-height: 30px;
+                            text-align: center;
+                            border-radius: 50%;
+                            background-color: $color-orange-0;
+                            color: $color-white-0;
+                            position: absolute;
+                            top: -7px;
+                            left: 5px;
+                            cursor: pointer;
+                            &:hover {
+                                color: $color-red-0;
+                                background-color: $color-yellow-0;
+                            }
+                        }
+                    }
+                    .cart__detail {
+                        p:first-of-type {
+                            @include styleText($color-yellow-0, $fs-3, $fw-2);
+                        }
+                        p:nth-of-type(2) {
+                            @include styleText($color-black-0, $fs-0 + 2, $fw-2);
+                        }
+                        p:last-of-type {
+                            @include styleText($color-gray-10, $fs-0 + 2, $fw-2);
+                        }
+                    }
+                    .cart__total {
+                        text-align: right;
+                        p:first-child {
+                            @include styleText($color-orange-0, $fs-3, $fw-2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
