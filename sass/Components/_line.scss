@@ -1,0 +1,35 @@
+/* LINE STYLE */
+.line::after {
+    content: '';
+    width: 0;
+    height: 3px;
+
+    /*
+    * Giá trị 1 - hướng trải màu
+        +) to right : trái qua phải
+        +) to left : phải qua trái
+        +) to bottom : từ trên xuống
+        +) to top : từ dưới lên
+
+    - Phụ thuộc vào hướng trải màu
+    * Giá trị 2 - màu bắt đầu 
+    * Giá trị 3 - màu kết thúc
+    */
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+
+    /* đổi tính chất thẻ after từ inline thành block 
+        để thẻ hiện lên giao diện */
+    display: block;
+
+    box-shadow: 0 0 20px 0 #fbbd61;
+    transition: 0.5s;
+}
+
+.line:hover::after {
+    width: 100%;
+}
+
+/* đang ở trang nào sẽ có đường viền */
+.line.active::after {
+    width: 100%;
+}
